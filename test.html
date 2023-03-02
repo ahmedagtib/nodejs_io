@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Socket.io Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+  </head>
+  <body>
+    <h1>Socket.io Test</h1>
+    <script>
+      // Connect to the server
+      const socket = io.connect('http://127.0.0.1:3000');
+
+      // Send a message to the server
+      socket.emit('message', 'Hello server!');
+
+      // Receive a message from the server
+      socket.on('message', (data) => {
+        console.log(`Received message: ${data}`);
+      });
+    </script>
+  </body>
+</html>
