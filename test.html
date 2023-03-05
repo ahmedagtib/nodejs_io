@@ -3,7 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>Socket.io Test</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+ <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"></script>-->
+
+
+ <script src="{{asset('socket.io.js')}}"></script>
+
+
+ <button onclick="send()">click</button>
+
+
+
+
+
   </head>
   <body>
     <h1>Socket.io Test</h1>
@@ -12,10 +23,17 @@
       const socket = io.connect('http://127.0.0.1:3000');
 
       // Send a message to the server
-      socket.emit('message', 'Hello server!');
+      function send(){
+        console.log('Hello server!')
+          socket.emit('message', {
+              name : "aaa",
+              phone : "wwww"
+          });
+      }
+ 
 
       // Receive a message from the server
-      socket.on('message', (data) => {
+      socket.on('order_processed', (data) => {
         console.log(`Received message: ${data}`);
       });
     </script>
